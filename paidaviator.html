@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviator Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+            background: black;
+            color: white;
+        }
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .prediction-box {
+            font-size: 28px;
+            font-weight: bold;
+            width: 160px;
+            height: 160px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ff9800, #e65100);
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 20px rgba(255, 152, 0, 0.8);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .button {
+            background: linear-gradient(45deg, #ff5733, #c70039);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(255, 87, 51, 0.6);
+        }
+        .button:hover {
+            background: linear-gradient(45deg, #c70039, #900c3f);
+        }
+        .button:disabled {
+            background: grey;
+            cursor: not-allowed;
+        }
+        .telegram-button {
+            margin-top: 20px;
+            background: linear-gradient(45deg, #0088cc, #005f8a);
+            color: white;
+            padding: 12px 24px;
+            font-size: 20px;
+            text-decoration: none;
+            border-radius: 10px;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        .telegram-button:hover {
+            background: linear-gradient(45deg, #005f8a, #004466);
+        }
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <h1>Paid User Aviator Prediction</h1>
+        <div class="prediction-box" id="prediction">Click the button</div>
+        <button class="button" id="predictButton" onclick="generatePrediction()">⚡Next Prediction⚡</button>
+        <a href="https://t.me/yourtelegram" class="telegram-button" target="_blank">Join Telegram</a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80 },
+                "size": { "value": 3 },
+                "move": { "speed": 2 },
+                "line_linked": { "enable": true, "opacity": 0.5 }
+            }
+        });
+        
+        var aviatorPredictions = [
+            "1.10×", "1.50×", "1.90×", "2.0×", "2.34×", 
+            "2.50×", "2.80×", "3.0×", "3.44×", "3.50×", 
+            "3.70×", "3.94×", "4.0×"
+        ];
+
+        function generatePrediction() {
+            var button = document.getElementById("predictButton");
+            button.disabled = true;
+            setTimeout(() => { button.disabled = false; }, 2000);
+            
+            var randomIndex = Math.floor(Math.random() * aviatorPredictions.length);
+            var prediction = aviatorPredictions[randomIndex];
+            document.getElementById("prediction").innerHTML = prediction;
+        }
+    </script>
+</body>
+</html>
